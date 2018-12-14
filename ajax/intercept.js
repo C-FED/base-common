@@ -15,6 +15,14 @@ $.ajaxSetup({
 
 
 // axios
+axios.interceptors.request.use(function (config) {
+    config.headers=Object.assign({
+        "x-requested-with":"XMLHttpRequest",
+    },config.headers);
+    return config;
+}, function (err) {
+    return Promise.reject(err);
+});
 axios.interceptors.response.use(function (res) {
     // 200
     if (res.data) {
