@@ -19,3 +19,10 @@
 
 ## 框架使用规范
 
+
+
+#### 参考  
+
+https://github.com/bendc/frontend-guidelines#semicolons  
+https://juejin.im/post/592d4a5b0ce463006b43b6da  
+https://juejin.im/post/5be163f451882516f70929d8  
