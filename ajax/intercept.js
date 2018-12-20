@@ -44,22 +44,35 @@ axios.interceptors.response.use(function (res) {
 
 // ajaxHook
 // <script src="https://unpkg.com/ajax-hook/dist/ajaxhook.min.js"></script>
+var verifyResponse = function(xhr) {
+    if (xhr.status === 200) {
+        var res = xhr.responseText;
+        var body;
+        try {
+            body = JSON.parse(res);
+        } catch(e) {
+            body = res;
+        }
+        var isKicked = body["Code"] === 401;
+        if (isKicked) {
+            window.alert(body["Message"]);
+            // redirect to login page
+            window.location.href = "http://login.xx.xxx/";
+            // prevent xhr
+            return true;
+        }
+    }
+}
 hookAjax({
-    //拦截回调
+    // axios
     onreadystatechange: function (xhr) {
         if (xhr.readyState === 4) {
-            if (xhr.status === 200) {
-                var res=xhr.responseText;
-                var body=JSON.parse(res);
-                var isKicked = body["Code"] === 401;
-                if (isKicked) {
-                    window.alert(body["Message"]);
-                    // redirect to login page
-                    window.location.href = "http://login.xx.xxx/";
-                }
-                // return true; // prevent xhr
-            }
+            return verifyResponse(xhr);
         }
+    },
+    // jquery
+    onload: function (xhr) {
+        return verifyResponse(xhr);
     },
 });
 
