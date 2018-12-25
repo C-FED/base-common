@@ -49,9 +49,57 @@ function img2Base64() { /*......*/ }
 function deleteInfo4Reset() { /*......*/ }
 ```
 
+<table>
+<thead>
+<tr>
+<th>动词</th>
+<th>含义</th>
+<th>返回值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>can</td>
+<td>判断是否可执行某个动作 ( 权限 )</td>
+<td>函数返回一个布尔值。true：可执行；false：不可执行</td>
+</tr>
+<tr>
+<td>has</td>
+<td>判断是否含有某个值</td>
+<td>函数返回一个布尔值。true：含有此值；false：不含有此值</td>
+</tr>
+<tr>
+<td>is</td>
+<td>判断是否为某个值</td>
+<td>函数返回一个布尔值。true：为某个值；false：不为某个值</td>
+</tr>
+<tr>
+<td>get</td>
+<td>获取某个值</td>
+<td>函数返回一个非布尔值</td>
+</tr>
+<tr>
+<td>set</td>
+<td>设置某个值</td>
+<td>无返回值、返回是否设置成功或者返回链式对象</td>
+</tr>
+</tbody>
+</table>
+
 ## 代码规范
 
-1. 变量声明  
+1. 避免全局命名空间污染  
+```js
+;(function($, w, d){
+  'use strict';
+
+  $(function() {
+    w.alert(d.querySelectorAll('div').length);
+  });
+}(jQuery, window, document));
+```
+
+2. 变量声明  
 尽量将所有变量放到函数或文件顶部
 ```js 
 let user;
@@ -62,13 +110,13 @@ function calcNum(a,b) {
 }
 ```
 
-2. 代码格式化   
+3. 代码格式化   
 编辑器自带格式化功能，格式化代码便于阅读，代码逻辑清晰，一目了然
 
-3. Tab用2个空格代替
+4. Tab用2个空格代替
 适应不同环境，保证不同编辑器打开代码的格式一致
 
-4. 不要省略分号
+5. 不要省略分号
 ```js
 let userAgent="chrome";
 function sum(a,b) {
@@ -76,7 +124,7 @@ function sum(a,b) {
 }
 ```
 
-5. 不要省略 `if else` ，`for` 等语句的括号  
+6. 不要省略 `if else`（即便是只有一行） ，`for` 等语句的括号  
 ```js
 if (a===1) {
     // ......
@@ -92,8 +140,23 @@ function sum(a,b) {
 }
 ```
 
-6. 不要使用 `for in` 遍历数组，原因[点击](https://www.cnblogs.com/jkj-jim/p/6389572.html)查看  
+7. 不要使用 `for in` 遍历数组，原因[点击](https://www.cnblogs.com/jkj-jim/p/6389572.html)查看  
 
+8. 总是使用严格等判断  
+总是使用 === 精确的比较操作符，避免在判断的过程中，由 JavaScript 的强制类型转换所造成的困扰
+```js
++[]==[]; // true
++[2]==[2]; // true
+null==undefined; // true
+0==false; // true
+```
+9. 永远不要使用 `eval`  
+以下方式也不可取
+```js
+new Function("msg","alert(msg);");
+setTimeout("search",3000);
+setInterval("search",3000);
+```
 
 ## 注释规范
 

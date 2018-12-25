@@ -4,8 +4,8 @@
 ## 命名规范
 1. 选择器名全部小写
 1. 选择器名全部用有意义英文单词或词组
-1. 不采用id选择器、标签选择器（除reset之外）
-1. 采用BEM命名法
+1. 不采用 `id` 选择器、标签选择器（除 `reset.css` 之外）
+1. 采用 [BEM](https://en.bem.info/methodology/css/) 命名法
 ```html
 <!-- block__item--modifier -->
 <!-- 块__子元素--修饰符 -->
