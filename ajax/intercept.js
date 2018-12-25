@@ -64,6 +64,23 @@ var verifyResponse = function(xhr) {
     }
 }
 hookAjax({
+    setRequestHeader(arg, xhr) {
+        let [header, value] = arg;
+        if(!this.headers) this.headers = {};
+        header = header.toLowerCase();
+        if(!this.headers[header]) this.headers[header] = [];
+        this.headers.push(value);
+    },
+    send(arg, xhr) {
+        var headers = this.headers || {};
+        if(headers['x-requested-with']) {
+            var arr = headers['x-requested-with'];
+            for(var i = 0, len = arr.length; i < len; i++) {
+                if(arr[i] === 'XMLHttpRequest') return;
+            }
+        }
+        xhr.setRequestHeader('x-requested-with', 'XMLHttpRequest');
+    },
     // axios
     onreadystatechange: function (xhr) {
         if (xhr.readyState === 4) {
