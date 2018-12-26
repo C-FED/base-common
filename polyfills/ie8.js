@@ -1,3 +1,17 @@
+/////////////////////// for in ///////////////////////////////////////
+/**
+ * 判断数组元素是否可以继续遍历  防止遍历出自己扩展的属性 e.g. "1,2,3,indexOf"
+ * @param {Array} arr 
+ * @param {number} i 
+ */
+function isCanForInArr(arr, i) {
+    if (typeof arr.push === "function") {
+        i = +i;
+        if (+i !== i) { return false; }
+    }
+    return true;
+}
+
 ////////////////////////  ployfills ///////////////////////////////////
 // 实现 ECMA-262, Edition 5, 15.4.4.19
 // 参考: http://es5.github.com/#x15.4.4.19
@@ -8,6 +22,10 @@
     var testIE = UA.match(/msie ([\d\.]+)/);
     var isIE8 = false;
     testIE && (isIE8 = +testIE[1] === 8);
+    // HTMLElement
+    if (typeof HTMLElement !== "function") {
+        window.HTMLElement = window.HTMLElement || Element;
+    }
     // String#trim
     if (!String.prototype.trim) {
         String.prototype.trim = function () {
@@ -301,7 +319,6 @@
             return fBound;
         };
     }
-    //////////////////////  考虑到代码里的 for in 太多，故数组一律不添加IE不支持的扩展方法  /////////////////////////////////
     // Array#fill
     if (!Array.prototype.fill) {
 
@@ -316,7 +333,20 @@
     }
     // Array#forEach
     if (!Array.prototype.forEach) {
+        Array.prototype.forEach = function (fun /*, thisp */) {
+            if (this === void 0 || this === null) { throw TypeError(); }
 
+            var t = Object(this);
+            var len = t.length >>> 0;
+            if (typeof fun !== "function") { throw TypeError(); }
+
+            var thisp = arguments[1], i;
+            for (i = 0; i < len; i++) {
+                if (i in t) {
+                    fun.call(thisp, t[i], i, t);
+                }
+            }
+        };
     }
     ////////////////////////////////////////////////////////////////
     // Object.keys
@@ -393,11 +423,13 @@
         return false;
     };
     // liek Array#fill
-    Array$fill = function (total, value/*, start, end*/) {
+    Array$fill = function (that, value/*, start, end*/) {
+        if (value === void 0) return that;
+
         var start = arguments[2],
             end = arguments[3];
 
-        var o = new Array(total);
+        var o = that;
         var lenVal = o.length;
         var len = ToLength(lenVal);
         len = max(len, 0);
