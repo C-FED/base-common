@@ -3,6 +3,7 @@
 ### JS
 - js 采用 `ES5` 标准书写
 - 使用 `jQuery` 1.x.x 版本，为了支持ie8
+- 不要使用 `for in` 遍历数组，用 `$.each`
 - 不要使用 `$("title").text("new title")` 操作 `title`，用原生 js 代替
 ```js
 document.title="new title";
@@ -30,21 +31,32 @@ var originLink="http://xxx.xxx.xxx/users?name="+encodeURIComponent("张三");
 - 严格按照标准的 `HTML` 规范书写
 ```html
 <table>
-	<thead>
-		<tr>
-			<th>序号</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>1</td>
-			<td><a href="http://xxx.xxx.xxx/xxx">第二届贵州法学论坛文集</a></td>
-			<td>贵州省法学会</td>
-			<td>2001-08</td>
-			<td>94</td>
-		</tr>
-	</tbody>
+    <thead>
+        <tr>
+            <th>序号</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td><a href="http://xxx.xxx.xxx/xxx">第二届贵州法学论坛文集</a></td>
+            <td>贵州省法学会</td>
+            <td>2001-08</td>
+            <td>94</td>
+        </tr>
+    </tbody>
 </table>
+```
+- 不使用 DOM0 级 事件绑定
+```html
+<!-- bad -->
+<button onclick="searchName()">Search</button>
+<!-- good -->
+<button id="btn-search">Search</button>
+<script>
+    var $btnSearch=$("#btn-search");
+    $btnSearch.on("click",searchName);
+</script>
 ```
 
 ### CSS
