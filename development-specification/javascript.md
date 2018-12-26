@@ -3,7 +3,7 @@
 
 ## 命名规范
 
-1. 文件命名
+-  文件命名
 
 - 文件夹名小写，多个单词用 “-” 分割   
 `src`  
@@ -16,7 +16,7 @@
 `README.md`  
 `webpack.config.js` （配置文件以 x.config.x 命名）
 
-2. 代码命名
+-  代码命名
 
 - 常量全部大写，多个单词用 “_” 分割  
 ```js
@@ -88,7 +88,29 @@ function deleteInfo4Reset() { /*......*/ }
 
 ## 代码规范
 
-1. 避免全局命名空间污染  
+- 函数/方法参数不宜超过3个，超过按如下方式书写
+```js
+// 参数小于等于3个时
+function sum(a,b) {return +a+b;}
+function reduce(a,b,c) {return +a+b+c;}
+// 参数大于3个时
+/**
+ * createElement
+ * @param {string} name 
+ * @param {object} options {id,className,onclick}
+ * @param {Array<HTMLElement>|string} children
+ */
+function render(name,options,children) { /* ... */ }
+/**
+ * set-cookie
+ * @param {string} key 
+ * @param {string} val
+ * @param {object} options {expires,domain,path}
+ */
+function setCookie(key,val,options) { /* ... */ }
+```
+
+- 避免全局命名空间污染  
 ```js
 ;(function($, w, d){
   'use strict';
@@ -99,7 +121,7 @@ function deleteInfo4Reset() { /*......*/ }
 }(jQuery, window, document));
 ```
 
-2. 变量声明  
+-  变量声明  
 尽量将所有变量放到函数或文件顶部
 ```js 
 let user;
@@ -110,13 +132,13 @@ function calcNum(a,b) {
 }
 ```
 
-3. 代码格式化   
+-  代码格式化   
 编辑器自带格式化功能，格式化代码便于阅读，代码逻辑清晰，一目了然
 
-4. Tab用2个空格代替
+-  Tab用2个空格代替
 适应不同环境，保证不同编辑器打开代码的格式一致
 
-5. 不要省略分号
+-  不要省略分号
 ```js
 let userAgent="chrome";
 function sum(a,b) {
@@ -124,7 +146,7 @@ function sum(a,b) {
 }
 ```
 
-6. 不要省略 `if else`（即便是只有一行） ，`for` 等语句的括号  
+-  不要省略 `if else`（即便是只有一行） ，`for` 等语句的括号  
 ```js
 if (a===1) {
     // ......
@@ -140,9 +162,9 @@ function sum(a,b) {
 }
 ```
 
-7. 不要使用 `for in` 遍历数组，原因[点击](https://www.cnblogs.com/jkj-jim/p/6389572.html)查看  
+-  不要使用 `for in` 遍历数组，原因[点击](https://www.cnblogs.com/jkj-jim/p/6389572.html)查看  
 
-8. 总是使用严格等判断  
+-  总是使用严格等判断  
 总是使用 === 精确的比较操作符，避免在判断的过程中，由 JavaScript 的强制类型转换所造成的困扰
 ```js
 +[]==[]; // true
@@ -150,7 +172,7 @@ function sum(a,b) {
 null==undefined; // true
 0==false; // true
 ```
-9. 永远不要使用 `eval`  
+-  永远不要使用 `eval`  
 以下方式也不可取
 ```js
 new Function("msg","alert(msg);");
@@ -160,12 +182,12 @@ setInterval("search",3000);
 
 ## 注释规范
 
-1. 变量声明/赋值，注释写在本行，与文字之间留一个空格
+-  变量声明/赋值，注释写在本行，与文字之间留一个空格
 ```js
 let userAgent; // 浏览器标示
 userAgent="chrome"; // 标示浏览器为chrome
 ```
-2. 函数/方法声明，注释写在前面，遵循 [javadoc](https://baike.baidu.com/item/javadoc) 要求
+-  函数/方法声明，注释写在前面，遵循 [javadoc](https://baike.baidu.com/item/javadoc) 要求
 ```js
 /**
  * 格式化日期
@@ -190,7 +212,7 @@ let singleton={
 
 ## 框架使用规范
 
-1. Vue
+-  Vue
 - Vue 实例的 `this` 用 `vm` 命名的变量保存
 - Vue `methods`，等方法和生命周期，不要用箭头函数声明
 
@@ -271,7 +293,7 @@ new Vue({
 </div>
 ```
 
-2. React
+-  React
 
 - 简单组件，无 `state`，用函数式声明方式
 ```jsx
@@ -300,7 +322,7 @@ class AutoHomer extend React.Component{
 }
 ```
 
-3. jQuery
+-  jQuery
 - 用变量保存 `DOM`
 - 用 `$`开头命名 `jQuery` 变量
 - 尽量用 id 选择器查询 `DOM`
@@ -313,6 +335,7 @@ let $elShowListBox=$("#show-list-box");
 
 #### 参考  
 
+https://github.com/airbnb/javascript  
 https://github.com/bendc/frontend-guidelines#semicolons  
 https://juejin.im/post/592d4a5b0ce463006b43b6da  
 https://juejin.im/post/5be163f451882516f70929d8  
