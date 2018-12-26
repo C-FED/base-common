@@ -51,6 +51,12 @@ var originLink="http://xxx.xxx.xxx/users?name="+encodeURIComponent("张三");
 ```html
 <!-- bad -->
 <button onclick="searchName()">Search</button>
+<!-- bad -->
+<button id="btn-search">Search</button>
+<script>
+    var btnSearch=document.getElementById("btn-search");
+    btnSearch.onclick=searchName;
+</script>
 <!-- good -->
 <button id="btn-search">Search</button>
 <script>
