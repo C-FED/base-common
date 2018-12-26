@@ -335,6 +335,7 @@ let $elShowListBox=$("#show-list-box");
 
 #### 参考  
 
+http://alloyteam.github.io/CodeGuide/  
 https://github.com/airbnb/javascript  
 https://github.com/bendc/frontend-guidelines#semicolons  
 https://juejin.im/post/592d4a5b0ce463006b43b6da  
