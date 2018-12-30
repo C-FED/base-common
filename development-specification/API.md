@@ -4,7 +4,7 @@
 ## 命名规范
 
 - 最好统一下返回的 `json` 格式，如下
-```json
+```js
 // 成功返回
 {
     success: true,
@@ -18,7 +18,7 @@
 ```
 
 - 最好统一下返回字段的命名方式，如下（小驼峰）
-```json
+```js
 {
     success: true,
     results: [
@@ -33,7 +33,7 @@
 ```
 
 - 不要将错误 `throw` 出到响应体
-```json
+```js
 // 失败返回
 {
     success: false,
