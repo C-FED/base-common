@@ -180,6 +180,25 @@ setTimeout("search",3000);
 setInterval("search",3000);
 ```
 
+- Promise 必须捕获错误
+```js
+
+var p=new Promise(function (resolve,reject) {
+    if (1==2) {
+        resolve()
+    } else {
+        reject(); 
+    }
+});
+
+p.then(res=>{
+    // ...
+}).catch(err=>{
+    // ...
+});
+
+```
+
 ## 注释规范
 
 -  变量声明/赋值，注释写在本行，与文字之间留一个空格
