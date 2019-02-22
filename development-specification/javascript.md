@@ -273,13 +273,13 @@ new Vue({
 </script>
 ```
 
-- Vue `template` 模版必须且只有一个根元素，可以使用 template 代替，最终不会渲染出来
+- Vue `template` 模版必须且只有一个根元素
 ```html
 <template>
-    <template>
+    <div>
         <h1>{{msg}}</h1>
         <p>Hello Vue</p>
-    </template>
+    </div>
 </template>
 ```
 
