@@ -273,12 +273,28 @@ new Vue({
 </script>
 ```
 
-- Vue `template` 模版必须且只有一个根元素
+- Vue `template` 模版必须且只有一个根元素，可以使用 template 代替，最终不会渲染出来
+```html
+<template>
+    <template>
+        <h1>{{msg}}</h1>
+        <p>Hello Vue</p>
+    </template>
+</template>
+```
+
+- Vue 可以把一个 <template> 元素当做不可见的包裹元素，并在上面使用 v-if。最终的渲染结果将不包含 <template> 元素。
 ```html
 <template>
     <div>
-        <h1>{{msg}}</h1>
-        <p>Hello Vue</p>
+        <template v-if="isHadData">
+            <h1>{{msg}}</h1>
+            <p>Hello Vue</p>
+        </template>
+        <template v-else>
+            <h1>{{msg}}</h1>
+            <p>Hello Vue</p>
+        </template>
     </div>
 </template>
 ```
