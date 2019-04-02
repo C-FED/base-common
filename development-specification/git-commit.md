@@ -1,7 +1,7 @@
-# git 提交规范
+## git 提交规范
 
 
-## Commit message 的格式
+### Commit message 的格式
 
 每次提交，Commit message 都包括三个部分：Header，Body 和 Footer。
 ```
@@ -38,8 +38,18 @@ scope用于说明 commit 影响的范围，比如数据层、控制层、视图�
 
 subject是 commit 目的的简短描述，不超过50个字符。
 
+### Commit Example
 
+```
+feat(index)：新增 index 页面的XXX功能
+fix(navi)：修补 navi 页面的bug
+docs：新增开发文档
+style(index)： 修复 index 页面的样式
+refactor(index.js)：重构 index.js 代码
+test：增加测试
+chore：构建工具由 webpack 转为 rollup
+```
 
-#### 参考 
+### 参考 
 
 http://www.ruanyifeng.com/blog/2016/01/commit_message_change_log.html
