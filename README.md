@@ -1,3 +1,3 @@
-# base-common-tools
-This is a tiny common tools for Base Development Depart     
-这是提供基础服务开发部的一个小工具库
+# base-common
+This is a common repo for Base Development Depart     
+这是提供基础服务开发部的开发规范的仓库
