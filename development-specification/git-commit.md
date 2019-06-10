@@ -50,6 +50,21 @@ test：增加测试
 chore：构建工具由 webpack 转为 rollup
 ```
 
+
+### git 分支命名规范
+
+
+|分支|		命名|		说明|
+|:--:|:--:|:--:|
+|主分支|		master		|主分支，所有提供给用户使用的正式版本，都在这个主分支上发布|
+|开发分支|		dev 		|开发分支，永远是功能最新最全的分支|
+|功能分支|		feature-*	|新功能分支，某个功能点正在开发阶段|
+|发布版本|		release-* |发布定期要上线的功能|
+|修复分支|		bug-*		|修复线上代码的 bug|
+
+
+
+
 ### 参考 
 
 http://www.ruanyifeng.com/blog/2016/01/commit_message_change_log.html
