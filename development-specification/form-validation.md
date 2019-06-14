@@ -4,6 +4,8 @@
 > - 无特殊说明，以下 “字母” 均代表英文字母
 > - 无特殊说明，以下 “数字” 均代表自然数
 
+#### 如有配置不合理，请提 [issues](https://github.com/C-FED/base-common/issues/new) ，如果有解决方案，请 fork 此仓库，然后提 [PR](https://github.com/C-FED/base-common/pulls)
+
 
 ### 基本验证标准
 
