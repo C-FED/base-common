@@ -1,4 +1,7 @@
-## 常用表单校验规则与标准
+# 文档已更换地址，请移步到 [gitlab](http://gitlab.dev.cnki.net/bsd/base-common/blob/master/development-specification/form-validation.md) 查看
+
+
+## ~~常用表单校验规则与标准~~
 
 > - 无特殊说明，以下标点符号均为英文状态下的标点符号
 > - 无特殊说明，以下 “字母” 均代表英文字母
