@@ -1,7 +1,12 @@
-# 文档已更换地址，请移步到 [gitlab](http://gitlab.dev.cnki.net/bsd/base-common/blob/master/development-specification/form-validation.md) 查看
 
 
-## ~~常用表单校验规则与标准~~
+<div style="background-color: #ffdfdf;">
+  <h1 style="color: #ff4136;">文档已更换地址，请移步到 <a href="http://gitlab.dev.cnki.net/bsd/base-common/blob/master/development-specification/form-validation.md">gitlab</a>查看
+  </h1>
+</div>
+
+
+## 常用表单校验规则与标准
 
 > - 无特殊说明，以下标点符号均为英文状态下的标点符号
 > - 无特殊说明，以下 “字母” 均代表英文字母
